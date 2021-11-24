@@ -1,3 +1,62 @@
+
+/**
+ * 使用 TypeScript 类型系统实现的贪吃蛇
+ *
+ * 游戏说明：
+ * - 通过修改 StartGame 的参数来开始游戏。
+ *  - 第一个参数传入游戏开始时贪吃蛇的坐标。
+ *  - 第二个参数传入所有食物的坐标，当贪吃蛇吃到食物的时候会长大，并在下一帧出现下一个食物。
+ *  - 第三个参数传入每一帧的动作。 W、A、S、D 分别代表 上、左、下、右。
+ * 
+ * - 鼠标悬浮在类型 F1 - FN 上查看每一帧的画面。
+ */
+type DefaultFoods = [[1, 0], [5, 0], [8, 0]];
+type DefaultSnake = {
+  head: [0, 0];
+  body: [[0, 1], [0, 2], [0, 3]];
+};
+type Game1 = StartGame<
+  DefaultSnake,
+  DefaultFoods,
+  [
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "D",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "S",
+    "A",
+    "A",
+    "A",
+    "A"
+  ]
+>;
+type F1 = Game1[0];
+type F2 = Game1[1];
+type F3 = Game1[2];
+type F4 = Game1[3];
+type F5 = Game1[4];
+type F6 = Game1[5];
+type F7 = Game1[6];
+type F8 = Game1[7];
+type F9 = Game1[8];
+type F10 = Game1[9];
+type F11 = Game1[10];
+type F12 = Game1[11];
+// ...
+type LastF = LastItem<Game1>;
+
+
+
+// source
 type Empty = "🟩";
 type SnakeHead = "🔴";
 type SnakeBody = "🟥";
@@ -163,46 +222,3 @@ type StartGame<
         Push<Frames, Frame<S, F>>
       >
   : never;
-
-type DefaultFoods = [[1, 0], [5, 0], [8, 0]];
-type DefaultSnake = {
-  head: [0, 0];
-  body: [[0, 1], [0, 2], [0, 3]];
-};
-type Game1 = StartGame<
-  DefaultSnake,
-  DefaultFoods,
-  [
-    "D",
-    "D",
-    "D",
-    "D",
-    "D",
-    "D",
-    "D",
-    "D",
-    "S",
-    "S",
-    "S",
-    "S",
-    "S",
-    "S",
-    "A",
-    "A"
-  ]
->;
-
-type F1 = Game1[0];
-type F2 = Game1[1];
-type F3 = Game1[2];
-type F4 = Game1[3];
-type F5 = Game1[4];
-type F6 = Game1[5];
-type F7 = Game1[6];
-type F8 = Game1[7];
-type F9 = Game1[8];
-type F10 = Game1[9];
-type F11 = Game1[10];
-type F12 = Game1[11];
-// ...
-type LastF = LastItem<Game1>;
